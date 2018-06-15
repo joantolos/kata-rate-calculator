@@ -1,10 +1,10 @@
 package com.joantolos.kata.rate.calculator.MarketDataLoader.core
 
-import com.joantolos.kata.rate.calculator.core.RateCalculator
+import com.joantolos.kata.rate.calculator.core.LoanProvider
 import com.joantolos.kata.rate.calculator.domain.Loan
 import spock.lang.Specification
 
-class RateCalculatorSpec extends Specification {
+class LoanProviderSpec extends Specification {
 
     private final String fakeDataPath = new File(this.getClass().getResource('/mockedMarketData.csv').toURI()).getAbsolutePath()
 
@@ -13,8 +13,8 @@ class RateCalculatorSpec extends Specification {
         String[] args = [fakeDataPath, "1000"]
 
         expect: 'the rate calculator should provide a loan'
-        RateCalculator rateCalculator = new RateCalculator(args)
-        Loan loan = rateCalculator.getLoan()
+        LoanProvider rateCalculator = new LoanProvider(args)
+        Loan loan = rateCalculator.provide()
         loan != null
 
         and: 'the loan can be printed'

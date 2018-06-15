@@ -1,11 +1,11 @@
 package com.joantolos.kata.rate.calculator;
 
-import com.joantolos.kata.rate.calculator.core.RateCalculator;
+import com.joantolos.kata.rate.calculator.core.LoanProvider;
 import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException;
 
-public class RateCalculatorApp {
+public class RateCalculator {
 
     public static void main(String[] args) throws WrongArgumentsException {
-        System.out.println(new RateCalculator(args).getLoan().toString());
+        System.out.println(new LoanProvider(args).provide().toString());
     }
 }

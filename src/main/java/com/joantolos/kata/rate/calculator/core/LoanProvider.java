@@ -6,17 +6,17 @@ import com.joantolos.kata.rate.calculator.domain.Loan;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class RateCalculator {
+public class LoanProvider {
 
     private List<Borrower> borrowers;
     private BigDecimal amount;
 
-    public RateCalculator(String[] args) {
+    public LoanProvider(String[] args) {
         this.borrowers = new BorrowerLoader().load(new Argument().get(args, Arguments.MARKET_DATA_FILE_PATH));
         this.amount = new BigDecimal(new Argument().get(args, Arguments.LOAN_AMOUNT));
     }
 
-    public Loan getLoan() {
+    public Loan provide() {
         BigDecimal totalRepayment = new BigDecimal("0");
         BigDecimal monthlyRepayment = new BigDecimal("0");
         BigDecimal rate = new BigDecimal("0");
