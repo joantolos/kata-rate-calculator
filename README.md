@@ -2,6 +2,19 @@
 
 This is a technical test from the company Zopa.
 
+## Running the code
+
+To run the build with test coverage:
+
+    ./gradlew clean build jacocoTestReport
+    
+You will find the coverage report on _kata-rate-calculator/build/jacoco/reports/coverage/html/index.html_
+
+You can run the RateCalculatorApp class on your IDE or by console:
+
+    ./gradlew fatJar
+    java -jar build/libs/kata-rate-calculator-all-1.0.jar marketData.csv 1000
+
 ## Test Instructions
 
 There is a need for a rate calculation system allowing prospective borrowers to  obtain a quote from our pool of lenders for 36 month loans. This system will  take the form of a command-line application.  

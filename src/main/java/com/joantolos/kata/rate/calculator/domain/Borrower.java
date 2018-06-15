@@ -3,6 +3,7 @@ package com.joantolos.kata.rate.calculator.domain;
 import java.math.BigDecimal;
 
 public class Borrower {
+
     private String lender;
     private BigDecimal rate;
     private BigDecimal available;

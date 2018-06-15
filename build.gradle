@@ -36,7 +36,7 @@ allprojects {
         afterEvaluate {
             classDirectories = files(classDirectories.files.collect {
                 fileTree(dir: it,
-                        exclude: ['com/joantolos/kata/rate/calculator/RateCalculator*'])
+                        exclude: ['com/joantolos/kata/rate/calculator/RateCalculatorApp*'])
             })
         }
     }
@@ -46,7 +46,7 @@ allprojects {
     }
 
     task fatJar(type: Jar) {
-        manifest { attributes'Main-Class': 'com.joantolos.kata.rate.calculator.RateCalculator' }
+        manifest { attributes'Main-Class': 'com.joantolos.kata.rate.calculator.RateCalculatorApp' }
         baseName = project.name + '-all'
         from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
         with jar

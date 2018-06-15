@@ -1,6 +1,6 @@
-package com.joantolos.kata.rate.calculator.MarketDataLoader
+package com.joantolos.kata.rate.calculator.MarketDataLoader.core
 
-import com.joantolos.kata.rate.calculator.BorrowerLoader
+import com.joantolos.kata.rate.calculator.core.BorrowerLoader
 import com.joantolos.kata.rate.calculator.exception.MarketDataFileLoadingException
 import spock.lang.Shared
 import spock.lang.Specification
@@ -8,25 +8,28 @@ import spock.lang.Specification
 class BorrowerLoaderSpec extends Specification {
 
     private final String fakeDataPath = new File(this.getClass().getResource('/mockedMarketData.csv').toURI()).getAbsolutePath()
-    @Shared BorrowerLoader loader
+
+    @Shared BorrowerLoader borrowerLoader
 
     def setupSpec() {
-        loader = new BorrowerLoader()
+        borrowerLoader = new BorrowerLoader()
     }
 
     def 'Borrower loader should load data from test resources' () {
         given: 'a fake file located on resources'
-        def borrowers = loader.load(fakeDataPath)
+        def borrowers = borrowerLoader.load(fakeDataPath)
 
         expect: 'the borrowers list to be completed'
         borrowers != null
         borrowers.size() == 7
         borrowers.get(0).lender == "Bob"
+        borrowers.get(0).rate == 0.075
+        borrowers.get(0).available == 640
     }
 
     def 'Borrower loader should raise exception when facing wrong file path' () {
         when: 'a non existing file'
-        loader.load('noFile.csv')
+        borrowerLoader.load('noFile.csv')
 
         then: 'a Market Data File Loading Exception is thrown'
         thrown(MarketDataFileLoadingException)
