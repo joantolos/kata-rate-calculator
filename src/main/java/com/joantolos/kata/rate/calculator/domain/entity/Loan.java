@@ -1,4 +1,4 @@
-package com.joantolos.kata.rate.calculator.domain;
+package com.joantolos.kata.rate.calculator.domain.entity;
 
 import java.math.BigDecimal;
 

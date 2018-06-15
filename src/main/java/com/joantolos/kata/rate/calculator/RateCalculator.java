@@ -1,6 +1,6 @@
 package com.joantolos.kata.rate.calculator;
 
-import com.joantolos.kata.rate.calculator.core.LoanProvider;
+import com.joantolos.kata.rate.calculator.domain.LoanProvider;
 import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException;
 
 public class RateCalculator {

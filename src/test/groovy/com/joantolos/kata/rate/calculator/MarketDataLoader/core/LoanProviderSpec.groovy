@@ -1,7 +1,7 @@
 package com.joantolos.kata.rate.calculator.MarketDataLoader.core
 
-import com.joantolos.kata.rate.calculator.core.LoanProvider
-import com.joantolos.kata.rate.calculator.domain.Loan
+import com.joantolos.kata.rate.calculator.domain.LoanProvider
+import com.joantolos.kata.rate.calculator.domain.entity.Loan
 import spock.lang.Specification
 
 class LoanProviderSpec extends Specification {

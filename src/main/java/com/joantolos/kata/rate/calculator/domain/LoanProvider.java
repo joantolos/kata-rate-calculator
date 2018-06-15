@@ -1,7 +1,8 @@
-package com.joantolos.kata.rate.calculator.core;
+package com.joantolos.kata.rate.calculator.domain;
 
-import com.joantolos.kata.rate.calculator.domain.Borrower;
-import com.joantolos.kata.rate.calculator.domain.Loan;
+import com.joantolos.kata.rate.calculator.domain.entity.Arguments;
+import com.joantolos.kata.rate.calculator.domain.entity.Borrower;
+import com.joantolos.kata.rate.calculator.domain.entity.Loan;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,8 +13,8 @@ public class LoanProvider {
     private BigDecimal amount;
 
     public LoanProvider(String[] args) {
-        this.borrowers = new BorrowerLoader().load(new Argument().get(args, Arguments.MARKET_DATA_FILE_PATH));
-        this.amount = new BigDecimal(new Argument().get(args, Arguments.LOAN_AMOUNT));
+        this.borrowers = new BorrowerLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
+        this.amount = new BigDecimal(new ArgumentParser().parse(args, Arguments.LOAN_AMOUNT));
     }
 
     public Loan provide() {

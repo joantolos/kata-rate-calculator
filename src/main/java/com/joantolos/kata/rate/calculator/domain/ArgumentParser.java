@@ -1,10 +1,11 @@
-package com.joantolos.kata.rate.calculator.core;
+package com.joantolos.kata.rate.calculator.domain;
 
+import com.joantolos.kata.rate.calculator.domain.entity.Arguments;
 import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException;
 
-public class Argument {
+public class ArgumentParser {
 
-    public String get(String[] args, Arguments argument) throws WrongArgumentsException {
+    public String parse(String[] args, Arguments argument) throws WrongArgumentsException {
         try {
             switch (argument) {
                 case MARKET_DATA_FILE_PATH:
