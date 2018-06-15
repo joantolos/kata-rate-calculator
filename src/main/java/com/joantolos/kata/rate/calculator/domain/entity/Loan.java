@@ -1,16 +1,18 @@
 package com.joantolos.kata.rate.calculator.domain.entity;
 
+import java.math.BigDecimal;
+
 public class Loan {
 
-    private String requestedAmount;
-    private String rate;
-    private String monthlyRepayment;
-    private String totalRepayment;
+    private BigDecimal requestedAmount;
+    private BigDecimal rate;
+    private BigDecimal monthlyRepayment;
+    private BigDecimal totalRepayment;
 
-    public Loan(String requestedAmount,
-                String rate,
-                String monthlyRepayment,
-                String totalRepayment) {
+    public Loan(BigDecimal requestedAmount,
+                BigDecimal rate,
+                BigDecimal monthlyRepayment,
+                BigDecimal totalRepayment) {
         this.requestedAmount = requestedAmount;
         this.rate = rate;
         this.monthlyRepayment = monthlyRepayment;
@@ -19,9 +21,9 @@ public class Loan {
 
     @Override
     public String toString() {
-        return "Requested amount: £" + this.requestedAmount + "\n" +
-                "Rate: " + this.rate + "\n" +
-                "Monthly repayment: £" + this.monthlyRepayment + "\n" +
-                "Total repayment: £" + this.totalRepayment;
+        return "Requested amount: £" + this.requestedAmount.toString() + "\n" +
+                "Rate: " + this.rate.toString() + "\n" +
+                "Monthly repayment: £" + this.monthlyRepayment.toString() + "\n" +
+                "Total repayment: £" + this.totalRepayment.toString();
     }
 }

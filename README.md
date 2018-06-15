@@ -60,3 +60,7 @@ If the market does not have sufficient offers from  lenders to satisfy the loa
 - The monthly and total repayment should use monthly compounding interest  
 - We will review your code and run it against some other test cases to see how  it handles them 
 - If you have any questions then don't hesitate to contact us
+
+## Monthly compounding interest formula
+
+https://www.thecalculatorsite.com/articles/finance/compound-interest-formula.php
