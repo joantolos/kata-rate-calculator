@@ -7,15 +7,9 @@ public class ArgumentParser {
 
     public String parse(String[] args, Arguments argument) throws WrongArgumentsException {
         try {
-            switch (argument) {
-                case MARKET_DATA_FILE_PATH:
-                    return args[0];
-                case LOAN_AMOUNT:
-                    return args[1];
-            }
+            return args[argument.getIndex()];
         } catch (Exception e) {
             throw new WrongArgumentsException(e.getMessage());
         }
-        throw new WrongArgumentsException("Unknown argument required");
     }
 }

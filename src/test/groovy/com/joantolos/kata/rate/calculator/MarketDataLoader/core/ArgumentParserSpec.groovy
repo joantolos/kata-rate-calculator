@@ -34,4 +34,12 @@ class ArgumentParserSpec extends Specification {
         thrown(WrongArgumentsException)
     }
 
+    def 'Argument should not accept null value' () {
+        when: 'asking for loan amount'
+        argument.parse(null, null)
+
+        then: 'a Wrong Argument Exception is thrown'
+        thrown(WrongArgumentsException)
+    }
+
 }

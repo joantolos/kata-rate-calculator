@@ -21,6 +21,6 @@ public class LoanProvider {
         BigDecimal totalRepayment = new BigDecimal("0");
         BigDecimal monthlyRepayment = new BigDecimal("0");
         BigDecimal rate = new BigDecimal("0");
-        return new Loan(amount, rate, monthlyRepayment, totalRepayment);
+        return new Loan(amount.toString(), rate.toString(), monthlyRepayment.toString(), totalRepayment.toString());
     }
 }

@@ -19,7 +19,6 @@ class LoanProviderSpec extends Specification {
 
         and: 'the loan can be printed'
         loan.toString()
-
     }
 
 }
