@@ -7,10 +7,11 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class BorrowerLoader {
+public class BorrowersLoader {
 
     public List<Borrower> load(String filePath){
         try {
@@ -23,9 +24,11 @@ public class BorrowerLoader {
                                 new BigDecimal(lineFields[1]),
                                 new BigDecimal(lineFields[2]));
                     })
+                    .sorted(Comparator.comparing(Borrower::getRate))
                     .collect(Collectors.toList());
         } catch (IOException e) {
             throw new MarketDataFileLoadingException(e.getMessage());
         }
     }
+
 }

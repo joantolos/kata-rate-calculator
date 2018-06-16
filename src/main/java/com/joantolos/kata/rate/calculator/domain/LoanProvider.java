@@ -16,7 +16,7 @@ public class LoanProvider {
     private final Integer MAX_YEAR = 3;
 
     public LoanProvider(String[] args) {
-        this.borrowers = new BorrowerLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
+        this.borrowers = new BorrowersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
         this.amount = new BigDecimal(new ArgumentParser().parse(args, Arguments.LOAN_AMOUNT));
         this.totalAvailable = this.calculateTotalAvailable(this.borrowers);
     }
