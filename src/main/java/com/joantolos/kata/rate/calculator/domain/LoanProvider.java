@@ -13,7 +13,6 @@ public class LoanProvider {
     private List<Borrower> borrowers;
     private BigDecimal amount;
     private BigDecimal totalAvailable;
-    private final Integer MAX_YEAR = 3;
 
     public LoanProvider(String[] args) {
         this.borrowers = new BorrowersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
@@ -31,9 +30,10 @@ public class LoanProvider {
             throw new NotSufficientFoundsException("The market does not have sufficient offers from lenders to satisfy the loan.");
         }
 
-        BigDecimal totalRepayment = new BigDecimal("0");
-        BigDecimal monthlyRepayment = new BigDecimal("0");
         BigDecimal rate = new BigDecimal("0");
+        BigDecimal monthlyRepayment = amount.divide(new BigDecimal(36), 2, BigDecimal.ROUND_HALF_UP);
+        BigDecimal totalRepayment = new BigDecimal("0");
+
         return new Loan(amount, rate, monthlyRepayment, totalRepayment);
     }
 }
