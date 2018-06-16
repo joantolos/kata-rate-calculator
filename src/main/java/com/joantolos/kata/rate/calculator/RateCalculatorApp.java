@@ -5,7 +5,7 @@ import com.joantolos.kata.rate.calculator.exception.IncorrectAmountException;
 import com.joantolos.kata.rate.calculator.exception.NotSufficientFoundsException;
 import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException;
 
-public class RateCalculator {
+public class RateCalculatorApp {
 
     public static void main(String[] args) {
         try {
