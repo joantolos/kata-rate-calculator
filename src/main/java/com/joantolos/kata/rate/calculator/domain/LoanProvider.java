@@ -32,7 +32,8 @@ public class LoanProvider {
 
         BigDecimal rate = new BigDecimal("0");
         BigDecimal monthlyRepayment = amount.divide(new BigDecimal(36), 2, BigDecimal.ROUND_HALF_UP);
-        BigDecimal totalRepayment = new BigDecimal("0");
+        BigDecimal monthlyRate = new BigDecimal(0);
+        BigDecimal totalRepayment = amount.add(monthlyRate.multiply(new BigDecimal(36)));
 
         return new Loan(amount, rate, monthlyRepayment, totalRepayment);
     }
