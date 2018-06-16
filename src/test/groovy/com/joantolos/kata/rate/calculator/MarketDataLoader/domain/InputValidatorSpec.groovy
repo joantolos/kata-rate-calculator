@@ -20,7 +20,7 @@ class InputValidatorSpec extends Specification {
     private final String fakeDataPath = new File(this.getClass().getResource('/mockedMarketData.csv').toURI()).getAbsolutePath()
 
     def setupSpec() {
-        inputValidator = new InputValidator()
+        inputValidator = new InputValidator(1000, 15000, 100)
     }
 
     def 'Input validator should raise an exception when wrong number of arguments passed' () {
@@ -36,7 +36,7 @@ class InputValidatorSpec extends Specification {
 
     def 'Input validator should raise an exception when the loan amount is higher than total available' () {
         given: 'a list of arguments detailing the data file location and a big loan amount'
-        String[] args = [fakeDataPath,"10000000"]
+        String[] args = [fakeDataPath,"15000"]
         borrowers = new BorrowersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
         amount = new BigDecimal(new ArgumentParser().parse(args, Arguments.LOAN_AMOUNT));
 
@@ -59,4 +59,5 @@ class InputValidatorSpec extends Specification {
         then: 'an Incorrect Amount Exception is thrown'
         thrown(IncorrectAmountException)
     }
+
 }

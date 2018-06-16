@@ -14,7 +14,7 @@ class ArgumentParserSpec extends Specification {
         argument = new ArgumentParser()
     }
 
-    def 'Argument should' () {
+    def 'Argument parser should' () {
         given: 'a list of arguments detailing the data file location and loan amount'
         String[] args = ["/myFolder/myData.csv", "1000"]
 
@@ -25,8 +25,8 @@ class ArgumentParserSpec extends Specification {
         argument.parse(args, Arguments.LOAN_AMOUNT) == "1000"
     }
 
-    def 'Argument should raise Wrong Argument Exception' () {
-        when: 'asking for loan amount'
+    def 'Argument parser should raise Wrong Argument Exception' () {
+        when: 'asking for loan without amount provided'
         String[] args = ["/myFolder/myData.csv"]
         argument.parse(args, Arguments.LOAN_AMOUNT)
 
@@ -34,8 +34,8 @@ class ArgumentParserSpec extends Specification {
         thrown(WrongArgumentsException)
     }
 
-    def 'Argument should not accept null value' () {
-        when: 'asking for loan amount'
+    def 'Argument parser should not accept null value' () {
+        when: 'asking without arguments'
         argument.parse(null, null)
 
         then: 'a Wrong Argument Exception is thrown'

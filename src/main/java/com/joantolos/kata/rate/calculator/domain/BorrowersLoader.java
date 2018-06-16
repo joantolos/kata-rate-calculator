@@ -16,7 +16,7 @@ public class BorrowersLoader {
     public List<Borrower> load(String filePath) throws MarketDataFileLoadingException {
         try {
             return Files.lines(Paths.get(filePath))
-                    .skip(1) //File header out
+                    .skip(1)
                     .map(line -> {
                         String[] lineFields = line.split(",");
                         return new Borrower(

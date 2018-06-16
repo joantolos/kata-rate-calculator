@@ -39,7 +39,7 @@ class BorrowersLoaderSpec extends Specification {
         given: 'a fake file located on resources'
         def borrowers = borrowerLoader.load(fakeDataPath)
 
-        expect: 'the borrowers list to be sorted'
+        expect: 'the borrowers list to be sorted by rate ascendant'
         borrowers.get(0).lender == "Jane"
         borrowers.get(1).lender == "Fred"
         borrowers.get(2).lender == "Angela"
@@ -47,6 +47,5 @@ class BorrowersLoaderSpec extends Specification {
         borrowers.get(4).lender == "Bob"
         borrowers.get(5).lender == "John"
         borrowers.get(6).lender == "Mary"
-
     }
 }
