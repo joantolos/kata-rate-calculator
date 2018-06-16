@@ -27,8 +27,7 @@ class LoanProviderSpec extends Specification {
         String[] args = [fakeDataPath, "10000000"]
 
         when: 'the rate calculator should provide a loan'
-        LoanProvider rateCalculator = new LoanProvider(args)
-        Loan loan = rateCalculator.provide()
+        new LoanProvider(args).provide()
 
         then: 'a Not Sufficient Founds Exception is thrown'
         thrown(NotSufficientFoundsException)
