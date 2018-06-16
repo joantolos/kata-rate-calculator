@@ -1,8 +1,11 @@
 package com.joantolos.kata.rate.calculator.MarketDataLoader.domain
 
+import com.joantolos.kata.rate.calculator.domain.ArgumentParser
+import com.joantolos.kata.rate.calculator.domain.BorrowersLoader
 import com.joantolos.kata.rate.calculator.domain.LoanProvider
+import com.joantolos.kata.rate.calculator.domain.entity.Arguments
+import com.joantolos.kata.rate.calculator.domain.entity.Borrower
 import com.joantolos.kata.rate.calculator.domain.entity.Loan
-import com.joantolos.kata.rate.calculator.exception.NotSufficientFoundsException
 import spock.lang.Specification
 
 class LoanProviderSpec extends Specification {
@@ -12,25 +15,16 @@ class LoanProviderSpec extends Specification {
     def 'Loan provider should respond with a loan' () {
         given: 'a fake file located on resources and a loan request of 1000'
         String[] args = [fakeDataPath, "1000"]
+        List<Borrower> borrowers = new BorrowersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
+        BigDecimal amount = new BigDecimal(new ArgumentParser().parse(args, Arguments.LOAN_AMOUNT));
 
         expect: 'the rate calculator should provide a loan'
-        LoanProvider rateCalculator = new LoanProvider(args)
-        Loan loan = rateCalculator.provide()
+        LoanProvider rateCalculator = new LoanProvider()
+        Loan loan = rateCalculator.provide(borrowers, amount)
         loan != null
 
         and: 'the loan can be printed'
         loan.toString()
-    }
-
-    def 'Loan provider should tell when there are no sufficient founds' () {
-        given: 'a fake file located on resources and a loan request of 10000000'
-        String[] args = [fakeDataPath, "10000000"]
-
-        when: 'the rate calculator should provide a loan'
-        new LoanProvider(args).provide()
-
-        then: 'a Not Sufficient Founds Exception is thrown'
-        thrown(NotSufficientFoundsException)
     }
 
 }

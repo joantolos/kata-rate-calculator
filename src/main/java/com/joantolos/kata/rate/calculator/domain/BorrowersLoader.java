@@ -13,7 +13,7 @@ import java.util.stream.Collectors;
 
 public class BorrowersLoader {
 
-    public List<Borrower> load(String filePath){
+    public List<Borrower> load(String filePath) throws MarketDataFileLoadingException {
         try {
             return Files.lines(Paths.get(filePath))
                     .skip(1) //File header out
