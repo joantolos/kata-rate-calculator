@@ -1,4 +1,4 @@
-package com.joantolos.kata.rate.calculator.MarketDataLoader.domain
+package com.joantolos.kata.rate.calculator.domain
 
 import com.joantolos.kata.rate.calculator.domain.ArgumentParser
 import com.joantolos.kata.rate.calculator.domain.BorrowersLoader

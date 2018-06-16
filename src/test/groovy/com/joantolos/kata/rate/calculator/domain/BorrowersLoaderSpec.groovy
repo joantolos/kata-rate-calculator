@@ -1,4 +1,4 @@
-package com.joantolos.kata.rate.calculator.MarketDataLoader.domain
+package com.joantolos.kata.rate.calculator.domain
 
 import com.joantolos.kata.rate.calculator.domain.BorrowersLoader
 import com.joantolos.kata.rate.calculator.exception.MarketDataFileLoadingException
