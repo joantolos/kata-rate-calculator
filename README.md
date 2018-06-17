@@ -63,4 +63,36 @@ If the market does not have sufficient offers from  lenders to satisfy the loa
 
 ## Monthly compounding interest formula
 
-https://www.thecalculatorsite.com/articles/finance/compound-interest-formula.php
+I've done some research about the compounding interest formula and I found this:
+
+<p>
+The formula for annual compound interest, including principal sum, is:<br><br>
+<b>A = P (1 + r/n)<sup> (nt)</sup></b>
+</p>
+
+<p>
+<b>Where:</b>
+</p>
+<p>
+<b>A</b> = the future value of the investment/loan, including interest<br>
+<b>P</b> = the principal investment amount (the initial deposit or loan amount)<br>
+<b>r</b> = the annual interest rate (decimal)<br>
+<b>n</b> = the number of times that interest is compounded per year<br>
+<b>t</b> = the number of years the money is invested or borrowed for
+</p>
+
+This formula has been extracted from the following site:
+
+* https://www.thecalculatorsite.com/articles/finance/compound-interest-formula.php
+
+The rate to inject on the formula is a median of the rate of each borrower that leans the money. So, if the client needs 1000 and the two first borrowers offer:
+
+480 at 0.069
+
+and
+
+520 at 0.071
+
+then the rate is (0.069 + 0.071) / 2
+
+If the amount is larger, more borrowers and rates will be involved.
