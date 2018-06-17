@@ -1,6 +1,6 @@
-package com.joantolos.kata.rate.calculator.domain
+package com.joantolos.kata.rate.calculator
 
-import com.joantolos.kata.rate.calculator.domain.BorrowersLoader
+import com.joantolos.kata.rate.calculator.BorrowersLoader
 import com.joantolos.kata.rate.calculator.exception.MarketDataFileLoadingException
 import spock.lang.Shared
 import spock.lang.Specification

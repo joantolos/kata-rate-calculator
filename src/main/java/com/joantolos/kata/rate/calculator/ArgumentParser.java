@@ -1,6 +1,6 @@
-package com.joantolos.kata.rate.calculator.domain;
+package com.joantolos.kata.rate.calculator;
 
-import com.joantolos.kata.rate.calculator.domain.entity.Arguments;
+import com.joantolos.kata.rate.calculator.domain.Arguments;
 import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException;
 
 public class ArgumentParser {

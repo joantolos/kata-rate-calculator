@@ -1,4 +1,4 @@
-package com.joantolos.kata.rate.calculator.domain.entity;
+package com.joantolos.kata.rate.calculator.domain;
 
 public enum Arguments {
     MARKET_DATA_FILE_PATH(0),

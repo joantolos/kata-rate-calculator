@@ -1,10 +1,10 @@
-package com.joantolos.kata.rate.calculator.domain
+package com.joantolos.kata.rate.calculator
 
-import com.joantolos.kata.rate.calculator.domain.ArgumentParser
-import com.joantolos.kata.rate.calculator.domain.BorrowersLoader
-import com.joantolos.kata.rate.calculator.domain.InputValidator
-import com.joantolos.kata.rate.calculator.domain.entity.Arguments
-import com.joantolos.kata.rate.calculator.domain.entity.Borrower
+import com.joantolos.kata.rate.calculator.ArgumentParser
+import com.joantolos.kata.rate.calculator.BorrowersLoader
+import com.joantolos.kata.rate.calculator.InputValidator
+import com.joantolos.kata.rate.calculator.domain.Arguments
+import com.joantolos.kata.rate.calculator.domain.Borrower
 import com.joantolos.kata.rate.calculator.exception.IncorrectAmountException
 import com.joantolos.kata.rate.calculator.exception.NotSufficientFoundsException
 import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException

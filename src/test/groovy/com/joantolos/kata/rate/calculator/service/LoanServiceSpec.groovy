@@ -1,15 +1,14 @@
-package com.joantolos.kata.rate.calculator.domain
+package com.joantolos.kata.rate.calculator.service
 
-import com.joantolos.kata.rate.calculator.domain.ArgumentParser
-import com.joantolos.kata.rate.calculator.domain.BorrowersLoader
-import com.joantolos.kata.rate.calculator.domain.LoanProvider
-import com.joantolos.kata.rate.calculator.domain.entity.Arguments
-import com.joantolos.kata.rate.calculator.domain.entity.Borrower
-import com.joantolos.kata.rate.calculator.domain.entity.Loan
+import com.joantolos.kata.rate.calculator.ArgumentParser
+import com.joantolos.kata.rate.calculator.BorrowersLoader
+import com.joantolos.kata.rate.calculator.domain.Arguments
+import com.joantolos.kata.rate.calculator.domain.Borrower
+import com.joantolos.kata.rate.calculator.domain.Loan
 import spock.lang.Shared
 import spock.lang.Specification
 
-class LoanProviderSpec extends Specification {
+class LoanServiceSpec extends Specification {
 
     @Shared String[] args
     @Shared List<Borrower> borrowers
@@ -22,9 +21,9 @@ class LoanProviderSpec extends Specification {
         amount = new BigDecimal(new ArgumentParser().parse(args, Arguments.LOAN_AMOUNT));
     }
 
-    def 'Loan provider should respond with a loan validating the input' () {
+    def 'Loan service should respond with a loan validating the input' () {
         expect: 'the rate calculator should provide a loan'
-        LoanProvider loanProvider = new LoanProvider()
+        LoanService loanProvider = new LoanService()
         Loan loan = loanProvider.provide(args)
         loan != null
 

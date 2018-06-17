@@ -1,6 +1,6 @@
-package com.joantolos.kata.rate.calculator.domain;
+package com.joantolos.kata.rate.calculator;
 
-import com.joantolos.kata.rate.calculator.domain.entity.Borrower;
+import com.joantolos.kata.rate.calculator.domain.Borrower;
 import com.joantolos.kata.rate.calculator.exception.MarketDataFileLoadingException;
 
 import java.io.IOException;

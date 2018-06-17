@@ -1,7 +1,6 @@
-package com.joantolos.kata.rate.calculator.domain
+package com.joantolos.kata.rate.calculator
 
-import com.joantolos.kata.rate.calculator.domain.ArgumentParser
-import com.joantolos.kata.rate.calculator.domain.entity.Arguments
+import com.joantolos.kata.rate.calculator.domain.Arguments
 import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException
 import spock.lang.Shared
 import spock.lang.Specification
