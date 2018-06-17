@@ -12,7 +12,6 @@ import com.joantolos.kata.rate.calculator.exception.NotSufficientFoundsException
 import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException;
 
 import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.List;
 
 public class LoanService {
@@ -36,16 +35,31 @@ public class LoanService {
         return this.getLoan(borrowers, amount);
     }
 
-    //Total repayment formula: A = P (1 + r/n)^(nt)
     protected Loan getLoan(List<Borrower> borrowers, BigDecimal amount) {
         BigDecimal rate = this.getRate(borrowers, amount);
-        BigDecimal totalRepayment = amount.multiply(rate.divide(new BigDecimal(12), RoundingMode.UP).add(new BigDecimal(1))).pow(NUM_MONTH);
-        BigDecimal monthlyRepayment = totalRepayment.divide(new BigDecimal(NUM_MONTH), BigDecimal.ROUND_UP);
+        BigDecimal totalRepayment = this.getTotalRepayment(amount, rate);
 
-        return new Loan(amount, rate, monthlyRepayment, totalRepayment);
+        return new Loan(
+                amount,
+                rate,
+                this.getMonthlyRepayment(totalRepayment),
+                totalRepayment);
     }
 
     protected BigDecimal getRate(List<Borrower> borrowers, BigDecimal amount) {
-        return new BigDecimal(0);
+        return new BigDecimal(0.07).setScale(2, BigDecimal.ROUND_FLOOR);
+    }
+
+    private BigDecimal getMonthlyRepayment(BigDecimal totalRepayment) {
+        return totalRepayment.divide(new BigDecimal(NUM_MONTH), 2, BigDecimal.ROUND_FLOOR);
+    }
+
+    private BigDecimal getTotalRepayment(BigDecimal amount, BigDecimal rate) {
+        return amount.multiply(rate
+                .divide(new BigDecimal(12), 7, BigDecimal.ROUND_FLOOR)
+                .add(new BigDecimal(1))
+                .pow(NUM_MONTH)
+                    .setScale(2, BigDecimal.ROUND_FLOOR)
+                ).setScale(2, BigDecimal.ROUND_FLOOR);
     }
 }
