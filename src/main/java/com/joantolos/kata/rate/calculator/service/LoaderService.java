@@ -13,12 +13,14 @@ import java.util.stream.Collectors;
 
 public class LoaderService {
 
+    private final String SEPARATOR = ",";
+
     public List<Lender> load(String filePath) throws MarketDataFileLoadingException {
         try {
             return Files.lines(Paths.get(filePath))
                     .skip(1)
                     .map(line -> {
-                        String[] lineFields = line.split(",");
+                        String[] lineFields = line.split(SEPARATOR);
                         return new Lender(
                                 lineFields[0],
                                 new BigDecimal(lineFields[1]),

@@ -3,6 +3,7 @@ package com.joantolos.kata.rate.calculator.domain;
 import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException;
 
 public enum Arguments {
+
     MARKET_DATA_FILE_PATH(0),
     LOAN_AMOUNT(1);
 

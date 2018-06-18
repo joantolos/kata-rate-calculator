@@ -26,7 +26,7 @@ class LoanServiceSpec extends Specification {
         loan != null
 
         and: 'the loan can be printed'
-        loan.toString()
+        loan.toString() != null
     }
 
     def 'Loan service should respond with the correct loan for a 1000 pounds amount' () {

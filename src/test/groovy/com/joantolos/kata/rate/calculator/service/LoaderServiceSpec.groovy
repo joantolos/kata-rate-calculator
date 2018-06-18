@@ -1,7 +1,6 @@
 package com.joantolos.kata.rate.calculator.service
 
 import com.joantolos.kata.rate.calculator.exception.MarketDataFileLoadingException
-import com.joantolos.kata.rate.calculator.service.LoaderService
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -9,15 +8,15 @@ class LoaderServiceSpec extends Specification {
 
     private final String fakeDataPath = new File(this.getClass().getResource('/mockedMarketData.csv').toURI()).getAbsolutePath()
 
-    @Shared LoaderService borrowerLoader
+    @Shared LoaderService loaderService
 
     def setupSpec() {
-        borrowerLoader = new LoaderService()
+        loaderService = new LoaderService()
     }
 
     def 'Lenders loader should load data from test resources' () {
         given: 'a fake file located on resources'
-        def lenders = borrowerLoader.load(fakeDataPath)
+        def lenders = loaderService.load(fakeDataPath)
 
         expect: 'the lenders list to be completed'
         lenders != null
@@ -29,7 +28,7 @@ class LoaderServiceSpec extends Specification {
 
     def 'Lenders loader should raise exception when facing wrong file path' () {
         when: 'a non existing file'
-        borrowerLoader.load('noFile.csv')
+        loaderService.load('noFile.csv')
 
         then: 'a Market Data File Loading Exception is thrown'
         thrown(MarketDataFileLoadingException)
@@ -37,7 +36,7 @@ class LoaderServiceSpec extends Specification {
     
     def 'Lenders loader should retrieve lenders sorted by rate ascending' () {
         given: 'a fake file located on resources'
-        def lenders = borrowerLoader.load(fakeDataPath)
+        def lenders = loaderService.load(fakeDataPath)
 
         expect: 'the lenders list to be sorted by rate ascendant'
         lenders.get(0).lender == "Jane"
