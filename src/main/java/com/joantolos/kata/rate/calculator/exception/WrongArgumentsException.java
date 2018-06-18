@@ -2,7 +2,7 @@ package com.joantolos.kata.rate.calculator.exception;
 
 public class WrongArgumentsException extends RuntimeException {
 
-    public WrongArgumentsException(String message) {
-        super(message);
+    public WrongArgumentsException() {
+        super(ErrorMessage.WRONG_ARGUMENTS);
     }
 }

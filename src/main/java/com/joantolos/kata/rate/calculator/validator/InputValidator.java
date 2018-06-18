@@ -1,4 +1,4 @@
-package com.joantolos.kata.rate.calculator;
+package com.joantolos.kata.rate.calculator.validator;
 
 import com.joantolos.kata.rate.calculator.domain.Arguments;
 import com.joantolos.kata.rate.calculator.domain.Lender;
@@ -24,20 +24,18 @@ public class InputValidator {
     }
 
     public void validateArgs(String[] args) throws WrongArgumentsException {
-        ArgumentParser argumentParser = new ArgumentParser();
-        argumentParser.parse(args, Arguments.MARKET_DATA_FILE_PATH);
-        argumentParser.parse(args, Arguments.LOAN_AMOUNT);
+        Arguments.parse(args, Arguments.MARKET_DATA_FILE_PATH);
+        Arguments.parse(args, Arguments.LOAN_AMOUNT);
     }
 
-    public void validateLoanAmount(BigDecimal amount, List<Lender> lenders) throws IncorrectAmountException, NotSufficientFoundsException {
+    public void validateLoanAmount(List<Lender> lenders, BigDecimal amount) throws IncorrectAmountException, NotSufficientFoundsException {
         if(amount.compareTo(getTotalAvailable(lenders)) > 0) {
-            throw new NotSufficientFoundsException("The market does not have sufficient offers from lenders to satisfy the loan.");
+            throw new NotSufficientFoundsException();
         }
 
         if(!availableLoans.contains(amount)) {
-            throw new IncorrectAmountException("The amount should be any £100 increment between £1000 and £15000");
+            throw new IncorrectAmountException();
         }
-
     }
 
     private BigDecimal getTotalAvailable(List<Lender> lenders) {

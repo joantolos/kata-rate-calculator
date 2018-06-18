@@ -1,4 +1,4 @@
-package com.joantolos.kata.rate.calculator;
+package com.joantolos.kata.rate.calculator.service;
 
 import com.joantolos.kata.rate.calculator.domain.Lender;
 import com.joantolos.kata.rate.calculator.exception.MarketDataFileLoadingException;
@@ -11,7 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class LendersLoader {
+public class LoaderService {
 
     public List<Lender> load(String filePath) throws MarketDataFileLoadingException {
         try {
@@ -27,7 +27,7 @@ public class LendersLoader {
                     .sorted(Comparator.comparing(Lender::getRate))
                     .collect(Collectors.toList());
         } catch (IOException e) {
-            throw new MarketDataFileLoadingException(e.getMessage());
+            throw new MarketDataFileLoadingException();
         }
     }
 

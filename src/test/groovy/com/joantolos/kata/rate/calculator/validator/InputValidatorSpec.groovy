@@ -1,10 +1,11 @@
-package com.joantolos.kata.rate.calculator
+package com.joantolos.kata.rate.calculator.validator
 
 import com.joantolos.kata.rate.calculator.domain.Arguments
 import com.joantolos.kata.rate.calculator.domain.Lender
 import com.joantolos.kata.rate.calculator.exception.IncorrectAmountException
 import com.joantolos.kata.rate.calculator.exception.NotSufficientFoundsException
 import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException
+import com.joantolos.kata.rate.calculator.service.LoaderService
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -34,11 +35,11 @@ class InputValidatorSpec extends Specification {
     def 'Input validator should raise an exception when the loan amount is higher than total available' () {
         given: 'a list of arguments detailing the data file location and a big loan amount'
         String[] args = [fakeDataPath,"15000"]
-        borrowers = new LendersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
-        amount = new BigDecimal(new ArgumentParser().parse(args, Arguments.LOAN_AMOUNT));
+        borrowers = new LoaderService().load(Arguments.parse(args, Arguments.MARKET_DATA_FILE_PATH));
+        amount = new BigDecimal(Arguments.parse(args, Arguments.LOAN_AMOUNT));
 
         when: 'validating the input'
-        inputValidator.validateLoanAmount(amount, borrowers)
+        inputValidator.validateLoanAmount(borrowers, amount)
 
         then: 'a Not Sufficient Founds Exception is thrown'
         thrown(NotSufficientFoundsException)
@@ -47,11 +48,11 @@ class InputValidatorSpec extends Specification {
     def 'Input validator should raise an exception when the loan amount is not correct' () {
         given: 'a list of arguments detailing the data file location and an invalid loan amount'
         String[] args = [fakeDataPath,"1005"]
-        borrowers = new LendersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
-        amount = new BigDecimal(new ArgumentParser().parse(args, Arguments.LOAN_AMOUNT));
+        borrowers = new LoaderService().load(Arguments.parse(args, Arguments.MARKET_DATA_FILE_PATH));
+        amount = new BigDecimal(Arguments.parse(args, Arguments.LOAN_AMOUNT));
 
         when: 'validating the input'
-        inputValidator.validateLoanAmount(amount, borrowers)
+        inputValidator.validateLoanAmount(borrowers, amount)
 
         then: 'an Incorrect Amount Exception is thrown'
         thrown(IncorrectAmountException)

@@ -22,9 +22,9 @@ public class Loan {
 
     @Override
     public String toString() {
-        return "Requested amount: £" + this.requestedAmount.toString() + "\n" +
+        return "Requested amount: £" + this.requestedAmount + "\n" +
                 "Rate: " + this.rate.multiply(new BigDecimal(100)).setScale(1, RoundingMode.CEILING) + "%" + "\n" +
-                "Monthly repayment: £" + this.monthlyRepayment.toString() + "\n" +
-                "Total repayment: £" + this.totalRepayment.toString();
+                "Monthly repayment: £" + this.monthlyRepayment + "\n" +
+                "Total repayment: £" + this.totalRepayment;
     }
 }

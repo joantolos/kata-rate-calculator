@@ -1,7 +1,5 @@
 package com.joantolos.kata.rate.calculator.service
 
-import com.joantolos.kata.rate.calculator.ArgumentParser
-import com.joantolos.kata.rate.calculator.LendersLoader
 import com.joantolos.kata.rate.calculator.domain.Arguments
 import com.joantolos.kata.rate.calculator.domain.Lender
 import com.joantolos.kata.rate.calculator.domain.Loan
@@ -17,8 +15,8 @@ class LoanServiceSpec extends Specification {
 
     def setupSpec() {
         args = [fakeDataPath, "1000"]
-        borrowers = new LendersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
-        amount = new BigDecimal(new ArgumentParser().parse(args, Arguments.LOAN_AMOUNT));
+        borrowers = new LoaderService().load(Arguments.parse(args, Arguments.MARKET_DATA_FILE_PATH));
+        amount = new BigDecimal(Arguments.parse(args, Arguments.LOAN_AMOUNT));
     }
 
     def 'Loan service should respond with a loan validating the input' () {
@@ -38,8 +36,8 @@ class LoanServiceSpec extends Specification {
         loan.toString() ==
                 "Requested amount: £1000\n" +
                 "Rate: 7.0%\n" +
-                "Monthly repayment: £34.16\n" +
-                "Total repayment: £1230.00"
+                "Monthly repayment: £29.72\n" +
+                "Total repayment: £1070.04"
     }
 
     def 'Loan service should respond with the correct loan for a 2000 pounds amount' () {
@@ -49,9 +47,9 @@ class LoanServiceSpec extends Specification {
         Loan loan = loanProvider.provide(args)
         loan.toString() ==
                 "Requested amount: £2000\n" +
-                "Rate: 7.0%\n" +
-                "Monthly repayment: £68.33\n" +
-                "Total repayment: £2460.00"
+                "Rate: 14.0%\n" +
+                "Monthly repayment: £64.40\n" +
+                "Total repayment: £2318.58"
     }
 
 }

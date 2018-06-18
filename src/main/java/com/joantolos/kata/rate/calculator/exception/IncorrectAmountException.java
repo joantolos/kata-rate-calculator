@@ -1,8 +1,8 @@
 package com.joantolos.kata.rate.calculator.exception;
 
-public class IncorrectAmountException extends Exception {
+public class IncorrectAmountException extends RuntimeException {
 
-    public IncorrectAmountException(String message) {
-        super(message);
+    public IncorrectAmountException() {
+        super(ErrorMessage.INCORRECT_AMOUNT);
     }
 }

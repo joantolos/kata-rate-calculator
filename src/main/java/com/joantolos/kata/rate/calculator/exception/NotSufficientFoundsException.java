@@ -1,8 +1,8 @@
 package com.joantolos.kata.rate.calculator.exception;
 
-public class NotSufficientFoundsException extends Exception {
+public class NotSufficientFoundsException extends RuntimeException {
 
-    public NotSufficientFoundsException(String message) {
-        super(message);
+    public NotSufficientFoundsException() {
+        super(ErrorMessage.NOT_SUFFICIENT_FOUNDS);
     }
 }

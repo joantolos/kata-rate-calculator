@@ -1,17 +1,18 @@
-package com.joantolos.kata.rate.calculator
+package com.joantolos.kata.rate.calculator.service
 
 import com.joantolos.kata.rate.calculator.exception.MarketDataFileLoadingException
+import com.joantolos.kata.rate.calculator.service.LoaderService
 import spock.lang.Shared
 import spock.lang.Specification
 
-class LendersLoaderSpec extends Specification {
+class LoaderServiceSpec extends Specification {
 
     private final String fakeDataPath = new File(this.getClass().getResource('/mockedMarketData.csv').toURI()).getAbsolutePath()
 
-    @Shared LendersLoader borrowerLoader
+    @Shared LoaderService borrowerLoader
 
     def setupSpec() {
-        borrowerLoader = new LendersLoader()
+        borrowerLoader = new LoaderService()
     }
 
     def 'Lenders loader should load data from test resources' () {
