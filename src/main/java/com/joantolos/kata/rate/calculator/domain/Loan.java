@@ -1,6 +1,7 @@
 package com.joantolos.kata.rate.calculator.domain;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Loan {
 
@@ -22,7 +23,7 @@ public class Loan {
     @Override
     public String toString() {
         return "Requested amount: £" + this.requestedAmount.toString() + "\n" +
-                "Rate: " + this.rate.toString() + "\n" +
+                "Rate: " + this.rate.multiply(new BigDecimal(100)).setScale(1, RoundingMode.CEILING) + "%" + "\n" +
                 "Monthly repayment: £" + this.monthlyRepayment.toString() + "\n" +
                 "Total repayment: £" + this.totalRepayment.toString();
     }

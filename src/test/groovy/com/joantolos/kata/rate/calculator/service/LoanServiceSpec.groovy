@@ -37,7 +37,7 @@ class LoanServiceSpec extends Specification {
         Loan loan = loanProvider.provide(args)
         loan.toString() ==
                 "Requested amount: £1000\n" +
-                "Rate: 0.07\n" +
+                "Rate: 7.0%\n" +
                 "Monthly repayment: £34.16\n" +
                 "Total repayment: £1230.00"
     }
@@ -49,7 +49,7 @@ class LoanServiceSpec extends Specification {
         Loan loan = loanProvider.provide(args)
         loan.toString() ==
                 "Requested amount: £2000\n" +
-                "Rate: 0.07\n" +
+                "Rate: 7.0%\n" +
                 "Monthly repayment: £68.33\n" +
                 "Total repayment: £2460.00"
     }

@@ -49,7 +49,7 @@ and
 
 then the rate is (0.069 + 0.071) / 2
 
-If the amount is larger, more lenders and rates will be involved.
+If the amount is larger, more lenders and rates will be involved. I am pretty sure this is not the way to do it, but it is the best approach I could find. 
 
 ## Test Instructions
 
