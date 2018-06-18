@@ -4,15 +4,24 @@ This is a technical test from the company Zopa.
 
 ## Running the code
 
+You will need Gradle install on your machine. Then create the gradle wrapper, on the project folder:
+
+    gradle wrapper
+
 To run the build with test coverage:
 
     ./gradlew clean build jacocoTestReport
     
 You will find the coverage report on _kata-rate-calculator/build/jacoco/reports/coverage/html/index.html_
 
-You can run the RateCalculatorApp class on your IDE or by console:
+You can run the RateCalculator class on your IDE or by console:
 
+Creating the fatJar:
+    
     ./gradlew fatJar
+    
+Running the jar:
+
     java -jar build/libs/kata-rate-calculator-all-1.0.jar marketData.csv 1000
     
 ## How I've calculated the rate
