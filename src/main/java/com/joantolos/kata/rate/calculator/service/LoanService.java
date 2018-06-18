@@ -1,10 +1,10 @@
 package com.joantolos.kata.rate.calculator.service;
 
 import com.joantolos.kata.rate.calculator.ArgumentParser;
-import com.joantolos.kata.rate.calculator.BorrowersLoader;
+import com.joantolos.kata.rate.calculator.LendersLoader;
 import com.joantolos.kata.rate.calculator.InputValidator;
 import com.joantolos.kata.rate.calculator.domain.Arguments;
-import com.joantolos.kata.rate.calculator.domain.Borrower;
+import com.joantolos.kata.rate.calculator.domain.Lender;
 import com.joantolos.kata.rate.calculator.domain.Loan;
 import com.joantolos.kata.rate.calculator.exception.IncorrectAmountException;
 import com.joantolos.kata.rate.calculator.exception.MarketDataFileLoadingException;
@@ -27,16 +27,16 @@ public class LoanService {
         InputValidator validator = new InputValidator(MIN_LOAN, MAX_LOAN, INCREMENT);
         validator.validateArgs(args);
 
-        List<Borrower> borrowers = new BorrowersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
+        List<Lender> lenders = new LendersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
         BigDecimal amount = new BigDecimal(new ArgumentParser().parse(args, Arguments.LOAN_AMOUNT));
 
-        validator.validateLoanAmount(amount, borrowers);
+        validator.validateLoanAmount(amount, lenders);
 
-        return this.getLoan(borrowers, amount);
+        return this.getLoan(lenders, amount);
     }
 
-    protected Loan getLoan(List<Borrower> borrowers, BigDecimal amount) {
-        BigDecimal rate = this.getRate(borrowers, amount);
+    private Loan getLoan(List<Lender> lenders, BigDecimal amount) {
+        BigDecimal rate = this.getRate(lenders, amount);
         BigDecimal totalRepayment = this.getTotalRepayment(amount, rate);
 
         return new Loan(
@@ -46,7 +46,7 @@ public class LoanService {
                 totalRepayment);
     }
 
-    protected BigDecimal getRate(List<Borrower> borrowers, BigDecimal amount) {
+    private BigDecimal getRate(List<Lender> lenders, BigDecimal amount) {
         return new BigDecimal(0.07).setScale(2, BigDecimal.ROUND_FLOOR);
     }
 

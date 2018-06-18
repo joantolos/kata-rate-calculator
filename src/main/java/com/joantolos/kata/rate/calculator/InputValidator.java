@@ -1,7 +1,7 @@
 package com.joantolos.kata.rate.calculator;
 
 import com.joantolos.kata.rate.calculator.domain.Arguments;
-import com.joantolos.kata.rate.calculator.domain.Borrower;
+import com.joantolos.kata.rate.calculator.domain.Lender;
 import com.joantolos.kata.rate.calculator.exception.IncorrectAmountException;
 import com.joantolos.kata.rate.calculator.exception.NotSufficientFoundsException;
 import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException;
@@ -29,8 +29,8 @@ public class InputValidator {
         argumentParser.parse(args, Arguments.LOAN_AMOUNT);
     }
 
-    public void validateLoanAmount(BigDecimal amount, List<Borrower> borrowers) throws IncorrectAmountException, NotSufficientFoundsException {
-        if(amount.compareTo(getTotalAvailable(borrowers)) > 0) {
+    public void validateLoanAmount(BigDecimal amount, List<Lender> lenders) throws IncorrectAmountException, NotSufficientFoundsException {
+        if(amount.compareTo(getTotalAvailable(lenders)) > 0) {
             throw new NotSufficientFoundsException("The market does not have sufficient offers from lenders to satisfy the loan.");
         }
 
@@ -40,8 +40,8 @@ public class InputValidator {
 
     }
 
-    private BigDecimal getTotalAvailable(List<Borrower> borrowers) {
-        return borrowers.stream().map(Borrower::getAvailable).reduce(BigDecimal.ZERO, BigDecimal::add);
+    private BigDecimal getTotalAvailable(List<Lender> lenders) {
+        return lenders.stream().map(Lender::getAvailable).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 
 }

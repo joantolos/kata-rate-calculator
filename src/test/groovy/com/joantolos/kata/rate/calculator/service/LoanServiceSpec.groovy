@@ -1,9 +1,9 @@
 package com.joantolos.kata.rate.calculator.service
 
 import com.joantolos.kata.rate.calculator.ArgumentParser
-import com.joantolos.kata.rate.calculator.BorrowersLoader
+import com.joantolos.kata.rate.calculator.LendersLoader
 import com.joantolos.kata.rate.calculator.domain.Arguments
-import com.joantolos.kata.rate.calculator.domain.Borrower
+import com.joantolos.kata.rate.calculator.domain.Lender
 import com.joantolos.kata.rate.calculator.domain.Loan
 import spock.lang.Shared
 import spock.lang.Specification
@@ -12,12 +12,12 @@ class LoanServiceSpec extends Specification {
 
     @Shared String fakeDataPath = new File(this.getClass().getResource('/mockedMarketData.csv').toURI()).getAbsolutePath()
     @Shared String[] args
-    @Shared List<Borrower> borrowers
+    @Shared List<Lender> borrowers
     @Shared BigDecimal amount
 
     def setupSpec() {
         args = [fakeDataPath, "1000"]
-        borrowers = new BorrowersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
+        borrowers = new LendersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
         amount = new BigDecimal(new ArgumentParser().parse(args, Arguments.LOAN_AMOUNT));
     }
 

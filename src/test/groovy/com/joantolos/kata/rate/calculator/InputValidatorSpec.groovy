@@ -1,10 +1,7 @@
 package com.joantolos.kata.rate.calculator
 
-import com.joantolos.kata.rate.calculator.ArgumentParser
-import com.joantolos.kata.rate.calculator.BorrowersLoader
-import com.joantolos.kata.rate.calculator.InputValidator
 import com.joantolos.kata.rate.calculator.domain.Arguments
-import com.joantolos.kata.rate.calculator.domain.Borrower
+import com.joantolos.kata.rate.calculator.domain.Lender
 import com.joantolos.kata.rate.calculator.exception.IncorrectAmountException
 import com.joantolos.kata.rate.calculator.exception.NotSufficientFoundsException
 import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException
@@ -14,7 +11,7 @@ import spock.lang.Specification
 class InputValidatorSpec extends Specification {
 
     @Shared InputValidator inputValidator
-    @Shared List<Borrower> borrowers
+    @Shared List<Lender> borrowers
     @Shared BigDecimal amount
 
     private final String fakeDataPath = new File(this.getClass().getResource('/mockedMarketData.csv').toURI()).getAbsolutePath()
@@ -37,7 +34,7 @@ class InputValidatorSpec extends Specification {
     def 'Input validator should raise an exception when the loan amount is higher than total available' () {
         given: 'a list of arguments detailing the data file location and a big loan amount'
         String[] args = [fakeDataPath,"15000"]
-        borrowers = new BorrowersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
+        borrowers = new LendersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
         amount = new BigDecimal(new ArgumentParser().parse(args, Arguments.LOAN_AMOUNT));
 
         when: 'validating the input'
@@ -50,7 +47,7 @@ class InputValidatorSpec extends Specification {
     def 'Input validator should raise an exception when the loan amount is not correct' () {
         given: 'a list of arguments detailing the data file location and an invalid loan amount'
         String[] args = [fakeDataPath,"1005"]
-        borrowers = new BorrowersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
+        borrowers = new LendersLoader().load(new ArgumentParser().parse(args, Arguments.MARKET_DATA_FILE_PATH));
         amount = new BigDecimal(new ArgumentParser().parse(args, Arguments.LOAN_AMOUNT));
 
         when: 'validating the input'

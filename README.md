@@ -39,7 +39,7 @@ This formula has been extracted from the following site:
 
 * https://www.thecalculatorsite.com/articles/finance/compound-interest-formula.php
 
-The rate to inject on the formula is a median of the rate of each borrower that leans the money. So, if the client needs 1000 and the two first borrowers offer:
+The rate to inject on the formula is a median of the rate of each borrower that leans the money. So, if the client needs 1000 and the two first lenders offer:
 
 480 at 0.069
 
@@ -49,11 +49,11 @@ and
 
 then the rate is (0.069 + 0.071) / 2
 
-If the amount is larger, more borrowers and rates will be involved.
+If the amount is larger, more lenders and rates will be involved.
 
 ## Test Instructions
 
-There is a need for a rate calculation system allowing prospective borrowers to  obtain a quote from our pool of lenders for 36 month loans. This system will  take the form of a command-line application.  
+There is a need for a rate calculation system allowing prospective lenders to  obtain a quote from our pool of lenders for 36 month loans. This system will  take the form of a command-line application.  
 
 You will be provided with a file containing a list of all the offers being made  by the lenders within the system in CSV format, see the example market.csv file  provided alongside this specification.
 
