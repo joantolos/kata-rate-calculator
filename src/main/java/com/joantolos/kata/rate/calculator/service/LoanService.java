@@ -1,13 +1,12 @@
 package com.joantolos.kata.rate.calculator.service;
 
-import com.joantolos.kata.rate.calculator.validator.InputValidator;
 import com.joantolos.kata.rate.calculator.domain.Arguments;
 import com.joantolos.kata.rate.calculator.domain.Lender;
 import com.joantolos.kata.rate.calculator.domain.Loan;
 import com.joantolos.kata.rate.calculator.exception.IncorrectAmountException;
 import com.joantolos.kata.rate.calculator.exception.MarketDataFileLoadingException;
 import com.joantolos.kata.rate.calculator.exception.NotSufficientFoundsException;
-import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException;
+import com.joantolos.kata.rate.calculator.validator.InputValidator;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -24,7 +23,7 @@ public class LoanService {
         this.validator = new InputValidator(MIN_LOAN, MAX_LOAN, INCREMENT);
     }
 
-    public Loan provide(String[] args) throws WrongArgumentsException, MarketDataFileLoadingException,
+    public Loan provide(String[] args) throws IllegalArgumentException, MarketDataFileLoadingException,
             NotSufficientFoundsException, IncorrectAmountException {
 
         this.validator.validateArgs(args);

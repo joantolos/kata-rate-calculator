@@ -4,7 +4,6 @@ import com.joantolos.kata.rate.calculator.domain.Arguments
 import com.joantolos.kata.rate.calculator.domain.Lender
 import com.joantolos.kata.rate.calculator.exception.IncorrectAmountException
 import com.joantolos.kata.rate.calculator.exception.NotSufficientFoundsException
-import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException
 import com.joantolos.kata.rate.calculator.service.LoaderService
 import spock.lang.Shared
 import spock.lang.Specification
@@ -29,7 +28,7 @@ class InputValidatorSpec extends Specification {
         inputValidator.validateArgs(args)
 
         then: 'a Wrong Argument Exception is thrown'
-        thrown(WrongArgumentsException)
+        thrown(IllegalArgumentException)
     }
 
     def 'Input validator should raise an exception when the loan amount is higher than total available' () {

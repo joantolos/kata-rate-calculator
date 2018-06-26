@@ -1,6 +1,6 @@
 package com.joantolos.kata.rate.calculator.domain;
 
-import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException;
+import com.joantolos.kata.rate.calculator.exception.ErrorMessage;
 
 public enum Arguments {
 
@@ -13,11 +13,11 @@ public enum Arguments {
         this.index = index;
     }
 
-    public static String parse(String[] args, Arguments argument) throws WrongArgumentsException {
+    public static String parse(String[] args, Arguments argument) throws IllegalArgumentException {
         try {
             return args[argument.index];
         } catch (ArrayIndexOutOfBoundsException | NullPointerException e) {
-            throw new WrongArgumentsException();
+            throw new IllegalArgumentException(ErrorMessage.ILLEGAL_ARGUMENT);
         }
     }
 }

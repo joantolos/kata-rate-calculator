@@ -1,6 +1,5 @@
 package com.joantolos.kata.rate.calculator.domain
 
-import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException
 import spock.lang.Specification
 
 class ArgumentsSpec extends Specification {
@@ -32,7 +31,7 @@ class ArgumentsSpec extends Specification {
         Arguments.parse(args, Arguments.LOAN_AMOUNT)
 
         then: 'a Wrong Argument Exception is thrown'
-        thrown(WrongArgumentsException)
+        thrown(IllegalArgumentException)
     }
 
     def 'Arguments should not accept null value' () {
@@ -40,7 +39,7 @@ class ArgumentsSpec extends Specification {
         Arguments.parse(null, null)
 
         then: 'a Wrong Argument Exception is thrown'
-        thrown(WrongArgumentsException)
+        thrown(IllegalArgumentException)
     }
 
 }

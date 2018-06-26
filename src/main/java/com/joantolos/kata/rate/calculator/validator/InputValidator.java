@@ -4,7 +4,6 @@ import com.joantolos.kata.rate.calculator.domain.Arguments;
 import com.joantolos.kata.rate.calculator.domain.Lender;
 import com.joantolos.kata.rate.calculator.exception.IncorrectAmountException;
 import com.joantolos.kata.rate.calculator.exception.NotSufficientFoundsException;
-import com.joantolos.kata.rate.calculator.exception.WrongArgumentsException;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -23,7 +22,7 @@ public class InputValidator {
                 .collect(Collectors.toList());
     }
 
-    public void validateArgs(String[] args) throws WrongArgumentsException {
+    public void validateArgs(String[] args) throws IllegalArgumentException {
         Arguments.parse(args, Arguments.MARKET_DATA_FILE_PATH);
         Arguments.parse(args, Arguments.LOAN_AMOUNT);
     }
